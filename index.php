@@ -1,5 +1,12 @@
 <?php
   session_start(); 
+
+  if ( isset( $_POST['reset'] ) )
+  {
+    session_unset();
+    session_destroy();
+    session_start();
+  }
  
   if ( !isset( $_SESSION['todos'] ) )
   { 
@@ -32,8 +39,7 @@
     </label>
     <input type="submit" value="Add to list">
     
-    <input type="reset" name="Reset"  value="Reset"   /> 
-    
+        <input type="submit" name="reset" value="Reset" id="reset">
   </form>
  
   <?php if ( !empty( $_SESSION['todos'] ) ) : ?>
